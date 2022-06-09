@@ -1,0 +1,19 @@
+body{background-color:rgb(34, 30, 41);}
+table.chessboard {
+    margin: 60px; 
+    background: rgb(27, 27, 27);
+    border: 50px solid rgb(51, 51, 51);
+    border-collapse: collapse; /* */
+}
+td.chessboard {
+    padding: 0;
+
+    width: 90px; height: 90px;
+    border: 0px solid #333; /* */
+}
+tr.chessboard:nth-child(odd)   td.chessboard:nth-child(even) 
+,
+tr.chessboard:nth-child(even)  td.chessboard:nth-child(odd)  {
+    background: rgb(180, 180, 180);
+}
+
