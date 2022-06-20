@@ -10,89 +10,89 @@
 </head>
 <body>
 
-<button onClick="changeTurn()">CHANGE TURN</button><button onClick="mapImages()">map</button>
+<button onclick="unvisualizePossibilities()">unvisual</button> <button onclick="changeTurn()">asdasd</button>
 <table class="chessboard">
-<tr class="chessboard">
-    <td class="chessboard a8-Square" id="a8-id"></td>
-    <td class="chessboard" id="b8"></td>
-    <td class="chessboard" id="c8"></td>
-    <td class="chessboard" id="d8"></td>
-    <td class="chessboard" id="e8"></td>
-    <td class="chessboard" id="f8"></td>
-    <td class="chessboard" id="g8"></td>
-    <td class="chessboard" id="h8"></td>
-</tr>
-<tr class="chessboard">
-    <td class="chessboard a7-Square" id="a7-id"></td>
-    <td class="chessboard" id="b7"></td>
-    <td class="chessboard" id="c7"></td>
-    <td class="chessboard" id="d7"></td>
-    <td class="chessboard" id="e7"></td>
-    <td class="chessboard" id="f7"></td>
-    <td class="chessboard" id="g7"></td>
-    <td class="chessboard" id="h7"></td>
-</tr>
-<tr class="chessboard">
-    <td class="chessboard a6-Square" id="a6-id"></td>
-    <td class="chessboard" id="b6"></td>
-    <td class="chessboard" id="c6"></td>
-    <td class="chessboard" id="d6"></td>
-    <td class="chessboard" id="e6"></td>
-    <td class="chessboard" id="f6"></td>
-    <td class="chessboard" id="g6"></td>
-    <td class="chessboard" id="h6"></td>
-</tr>
-<tr class="chessboard">
-    <td class="chessboard a5-Square" id="a5-id"></td>
-    <td class="chessboard" id="b5"></td>
-    <td class="chessboard" id="c5"></td>
-    <td class="chessboard" id="d5"></td>
-    <td class="chessboard" id="e5"></td>
-    <td class="chessboard" id="f5"></td>
-    <td class="chessboard" id="g5"></td>
-    <td class="chessboard" id="h5"></td>
-</tr>
-<tr class="chessboard">
-    <td class="chessboard a4-Square" id="a4-id"></td>
-    <td class="chessboard" id="b4"></td>
-    <td class="chessboard" id="c4"></td>
-    <td class="chessboard" id="d4"></td>
-    <td class="chessboard" id="e4"></td>
-    <td class="chessboard" id="f4"></td>
-    <td class="chessboard" id="g4"></td>
-    <td class="chessboard" id="h4"></td>
-</tr>
-<tr class="chessboard">
-    <td class="chessboard a3-Square" id="a3-id"></td>
-    <td class="chessboard" id="b3"></td>
-    <td class="chessboard" id="c3"></td>
-    <td class="chessboard" id="d3"></td>
-    <td class="chessboard" id="e3"></td>
-    <td class="chessboard" id="f3"></td>
-    <td class="chessboard" id="g3"></td>
-    <td class="chessboard" id="h3"></td>
-</tr>
-<tr class="chessboard">
-    <td class="chessboard a2-Square" id="a2-id"></td>
-    <td class="chessboard" id="b2"></td>
-    <td class="chessboard" id="c2"></td>
-    <td class="chessboard" id="d2"></td>
-    <td class="chessboard" id="e2"></td>
-    <td class="chessboard" id="f2"></td>
-    <td class="chessboard" id="g2"></td>
-    <td class="chessboard" id="h2"></td>
-</tr>
-<tr class="chessboard">
-    <td class="chessboard a1-Square" id="a1-id"></td>
-    <td class="chessboard" id="b1"></td>
-    <td class="chessboard" id="c1"></td>
-    <td class="chessboard" id="d1"></td>
-    <td class="chessboard" id="e1"></td>
-    <td class="chessboard" id="f1"></td>
-    <td class="chessboard" id="g1"></td>
-    <td class="chessboard" id="h1"></td>
-</tr>
-</table>
+    <tr class="chessboard">
+        <td class="chessboard a8-Square" id="a8-id"></td>
+        <td class="chessboard b8-Square" id="b8-id"></td>
+        <td class="chessboard c8-Square" id="c8-id"></td>
+        <td class="chessboard d8-Square" id="d8-id"></td>
+        <td class="chessboard e8-Square" id="e8-id"></td>
+        <td class="chessboard f8-Square" id="f8-id"></td>
+        <td class="chessboard g8-Square" id="g8-id"></td>
+        <td class="chessboard h8-Square" id="h8-id"></td>
+    </tr>
+    <tr class="chessboard">
+        <td class="chessboard a7-Square" id="a7-id"></td>
+        <td class="chessboard b7-Square" id="b7-id"></td>
+        <td class="chessboard c7-Square" id="c7-id"></td>
+        <td class="chessboard d7-Square" id="d7-id"></td>
+        <td class="chessboard e7-Square" id="e7-id"></td>
+        <td class="chessboard f7-Square" id="f7-id"></td>
+        <td class="chessboard g7-Square" id="g7-id"></td>
+        <td class="chessboard h7-Square" id="h7-id"></td>
+    </tr>
+    <tr class="chessboard">
+        <td class="chessboard a6-Square" id="a6-id"></td>
+        <td class="chessboard b6-Square" id="b6-id"></td>
+        <td class="chessboard c6-Square" id="c6-id"></td>
+        <td class="chessboard d6-Square" id="d6-id"></td>
+        <td class="chessboard e6-Square" id="e6-id"></td>
+        <td class="chessboard f6-Square" id="f6-id"></td>
+        <td class="chessboard g6-Square" id="g6-id"></td>
+        <td class="chessboard h6-Square" id="h6-id"></td>
+    </tr>
+    <tr class="chessboard">
+        <td class="chessboard a5-Square" id="a5-id"></td>
+        <td class="chessboard b5-Square" id="b5-id"></td>
+        <td class="chessboard c5-Square" id="c5-id"></td>
+        <td class="chessboard d5-Square" id="d5-id"></td>
+        <td class="chessboard e5-Square" id="e5-id"></td>
+        <td class="chessboard f5-Square" id="f5-id"></td>
+        <td class="chessboard g5-Square" id="g5-id"></td>
+        <td class="chessboard h5-Square" id="h5-id"></td>
+    </tr>
+    <tr class="chessboard">
+        <td class="chessboard a4-Square" id="a4-id"></td>
+        <td class="chessboard b4-Square" id="b4-id"></td>
+        <td class="chessboard c4-Square" id="c4-id"></td>
+        <td class="chessboard d4-Square" id="d4-id"></td>
+        <td class="chessboard e4-Square" id="e4-id"></td>
+        <td class="chessboard f4-Square" id="f4-id"></td>
+        <td class="chessboard g4-Square" id="g4-id"></td>
+        <td class="chessboard h4-Square" id="h4-id"></td>
+    </tr>
+    <tr class="chessboard">
+        <td class="chessboard a3-Square" id="a3-id"></td>
+        <td class="chessboard b3-Square" id="b3-id"></td>
+        <td class="chessboard c3-Square" id="c3-id"></td>
+        <td class="chessboard d3-Square" id="d3-id"></td>
+        <td class="chessboard e3-Square" id="e3-id"></td>
+        <td class="chessboard f3-Square" id="f3-id"></td>
+        <td class="chessboard g3-Square" id="g3-id"></td>
+        <td class="chessboard h3-Square" id="h3-id"></td>
+    </tr>
+    <tr class="chessboard">
+        <td class="chessboard a2-Square" id="a2-id"></td>
+        <td class="chessboard b2-Square" id="b2-id"></td>
+        <td class="chessboard c2-Square" id="c2-id"></td>
+        <td class="chessboard d2-Square" id="d2-id"></td>
+        <td class="chessboard e2-Square" id="e2-id"></td>
+        <td class="chessboard f2-Square" id="f2-id"></td>
+        <td class="chessboard g2-Square" id="g2-id"></td>
+        <td class="chessboard h2-Square" id="h2-id"></td>
+    </tr>
+    <tr class="chessboard">
+        <td class="chessboard a1-Square" id="a1-id"></td>
+        <td class="chessboard b1-Square" id="b1-id"></td>
+        <td class="chessboard c1-Square" id="c1-id"></td>
+        <td class="chessboard d1-Square" id="d1-id"></td>
+        <td class="chessboard e1-Square" id="e1-id"></td>
+        <td class="chessboard f1-Square" id="f1-id"></td>
+        <td class="chessboard g1-Square" id="g1-id"></td>
+        <td class="chessboard h1-Square" id="h1-id"></td>
+    </tr>
+    </table>
         
 
 
@@ -101,66 +101,9 @@
 
 
 
-    <script src="javascript.js"></script>
-</body>
-</html>
-    <td class="chessboard" id="b5"></td>
-    <td class="chessboard" id="c5"></td>
-    <td class="chessboard" id="d5"></td>
-    <td class="chessboard" id="e5"></td>
-    <td class="chessboard" id="f5"></td>
-    <td class="chessboard" id="g5"></td>
-    <td class="chessboard" id="h5"></td>
-</tr>
-<tr class="chessboard">
-    <td class="chessboard a4-Square" id="a4-id"></td>
-    <td class="chessboard" id="b4"></td>
-    <td class="chessboard" id="c4"></td>
-    <td class="chessboard" id="d4"></td>
-    <td class="chessboard" id="e4"></td>
-    <td class="chessboard" id="f4"></td>
-    <td class="chessboard" id="g4"></td>
-    <td class="chessboard" id="h4"></td>
-</tr>
-<tr class="chessboard">
-    <td class="chessboard a3-Square" id="a3"></td>
-    <td class="chessboard" id="b3"></td>
-    <td class="chessboard" id="c3"></td>
-    <td class="chessboard" id="d3"></td>
-    <td class="chessboard" id="e3"></td>
-    <td class="chessboard" id="f3"></td>
-    <td class="chessboard" id="g3"></td>
-    <td class="chessboard" id="h3"></td>
-</tr>
-<tr class="chessboard">
-    <td class="chessboard a2-Square" id="a2-id"></td>
-    <td class="chessboard" id="b2"></td>
-    <td class="chessboard" id="c2"></td>
-    <td class="chessboard" id="d2"></td>
-    <td class="chessboard" id="e2"></td>
-    <td class="chessboard" id="f2"></td>
-    <td class="chessboard" id="g2"></td>
-    <td class="chessboard" id="h2"></td>
-</tr>
-<tr class="chessboard">
-    <td class="chessboard a1-Square" id="a1-id"></td>
-    <td class="chessboard" id="b1"></td>
-    <td class="chessboard" id="c1"></td>
-    <td class="chessboard" id="d1"></td>
-    <td class="chessboard" id="e1"></td>
-    <td class="chessboard" id="f1"></td>
-    <td class="chessboard" id="g1"></td>
-    <td class="chessboard" id="h1"></td>
-</tr>
-</table>
-        
 
-
-
-
-
-
-
-    <script src="javascript.js"></script>
+    <script src="chess.js"></script>
+   
+    
 </body>
 </html>
