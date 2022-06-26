@@ -163,7 +163,7 @@ checkChecker(){
         (let i = 0; i < squaresArray.length; i ++){
             if ('king' == squaresArray[i].pieceType && 'white' == squaresArray[i].pieceColor && 0 != squaresArray[i].blackCount ){ 
                 divArray[i].style.backgroundImage = "url('./assets/red2.jpg')"
-                squaresArray[i].check = true;
+               
             wKingInCheck = true;
             
 
@@ -171,9 +171,6 @@ checkChecker(){
 
         }
     }
-
-
-
 //l
 //  If piececolor is black and the piece is a king and the white count is not zero
 //
@@ -183,7 +180,7 @@ checkChecker(){
             if ('king' == squaresArray[i].pieceType && 'black' == squaresArray[i].pieceColor && 0 != squaresArray[i].whiteCount ){ 
                 divArray[i].style.backgroundImage = "url('./assets/red2.jpg')"
             bKingInCheck = true;
-            squaresArray[i].check = true;
+
 
 
         }
@@ -197,10 +194,359 @@ runCountChecker(){
         if (squaresArray[i].altPieceType == 'rook' && squaresArray[i].altPieceColor != currentTurnColor){
 rookCountUp(squaresArray[i].row + 1,squaresArray[i].col)
 rookCountDown(squaresArray[i].row -1, squaresArray[i].col )
-       
-        }
-    } 
+rookCountLeft(squaresArray[i].row , squaresArray[i].col - 1 )       
+rookCountRight(squaresArray[i].row , squaresArray[i].col + 1 )           
 }
+if (squaresArray[i].altPieceType == 'bishop' && squaresArray[i].altPieceColor != currentTurnColor){
+    bishopCountUpRight(squaresArray[i].row + 1,squaresArray[i].col + 1)
+    bishopCountDownRight(squaresArray[i].row -1, squaresArray[i].col +1 )
+    bishopCountUpLeft(squaresArray[i].row +1 , squaresArray[i].col - 1 )       
+    bishopCountDownLeft(squaresArray[i].row -1 , squaresArray[i].col - 1 )           
+    }
+
+
+
+    if (squaresArray[i].altPieceType == 'queen' && squaresArray[i].altPieceColor != currentTurnColor){
+        bishopCountUpRight(squaresArray[i].row + 1,squaresArray[i].col + 1)
+        bishopCountDownRight(squaresArray[i].row -1, squaresArray[i].col +1 )
+        bishopCountUpLeft(squaresArray[i].row +1 , squaresArray[i].col - 1 )       
+        bishopCountDownLeft(squaresArray[i].row -1 , squaresArray[i].col - 1 )      
+        rookCountUp(squaresArray[i].row + 1,squaresArray[i].col)
+        rookCountDown(squaresArray[i].row -1, squaresArray[i].col )
+        rookCountLeft(squaresArray[i].row , squaresArray[i].col - 1 )       
+        rookCountRight(squaresArray[i].row , squaresArray[i].col + 1 )          
+        }
+    
+
+        if (squaresArray[i].altPieceType == 'pawn' && currentTurnColor == 'white' && squaresArray[i].altPieceColor != currentTurnColor){
+            pawnCountBlack(squaresArray[i].row - 1,squaresArray[i].col + 1)
+            pawnCountBlack(squaresArray[i].row -1, squaresArray[i].col -1 )
+       
+            }
+    
+        
+
+        if (squaresArray[i].altPieceType == 'pawn' && currentTurnColor == 'black' && squaresArray[i].altPieceColor != currentTurnColor){
+            pawnCountWhite(squaresArray[i].row +1,squaresArray[i].col + 1)
+            pawnCountWhite(squaresArray[i].row +1, squaresArray[i].col -1 )
+       
+            }
+        
+        
+        if (squaresArray[i].altPieceType == 'knight' && squaresArray[i].altPieceColor != currentTurnColor){
+            knightCount(squaresArray[i].row + 2, squaresArray[i].col + 1)
+            knightCount(squaresArray[i].row+ 1, squaresArray[i].col + 2)
+            knightCount(squaresArray[i].row - 1, squaresArray[i].col + 2)
+            knightCount(squaresArray[i].row- 2, squaresArray[i].col + 1)
+            knightCount(squaresArray[i].row - 2, squaresArray[i].col - 1)
+            knightCount(squaresArray[i].row - 1, squaresArray[i].col - 2)
+            knightCount(squaresArray[i].row+ 1, squaresArray[i].col - 2)
+            knightCount(squaresArray[i].row + 2, squaresArray[i].col - 1)
+            }
+        }
+
+}
+
+
+
+//f
+//
+//
+function
+knightCount(row, col){
+    squareName = findSquare(row,col)
+
+
+
+    if (squareName == undefined) {return}
+
+if (currentTurnColor == 'white'){
+if (squareName.altPieceColor != ''){ squareName.blackCount++;
+console.log('encounter for black');
+ return}
+if ( squareName.altPieceType == ''  ){
+
+    
+    squareName.blackCount++;
+    console.log('i Recursioned for black count')
+   
+   
+}
+}
+
+if (currentTurnColor == 'black'){
+    if (squareName.altPieceColor != ''){ squareName.whiteCount++;
+        console.log('encounter for white');
+         return}
+  
+    if ( squareName.altPieceType == ''  ){
+         
+        
+        squareName.whiteCount++;
+        console.log('i Recursioned for white')
+ 
+       
+    }
+    }
+
+}
+
+
+
+
+
+
+
+//f
+//
+//
+function
+pawnCountBlack(row, col){
+    squareName = findSquare(row,col)
+
+
+
+    if (squareName == undefined) {return}
+
+if (currentTurnColor == 'white'){
+if (squareName.altPieceColor != ''){ squareName.blackCount++;
+console.log('encounter for black');
+ return}
+if ( squareName.altPieceType == ''  ){
+
+    
+    squareName.blackCount++;
+    console.log('i Recursioned for black count')
+
+   
+}
+}
+
+
+}
+
+//f
+//
+//
+function
+pawnCountWhite(row, col){
+    squareName = findSquare(row,col)
+
+
+
+    if (squareName == undefined) {return}
+
+if (currentTurnColor == 'black'){
+if (squareName.altPieceColor != ''){ squareName.whiteCount++;
+
+ return}
+if ( squareName.altPieceType == ''  ){
+
+    
+    squareName.whiteCount++;
+ 
+
+   
+}
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+//f
+//
+//
+function
+bishopCountUpRight(row, col){
+    squareName = findSquare(row,col)
+
+
+
+    if (squareName == undefined) {return}
+
+if (currentTurnColor == 'white'){
+if (squareName.altPieceColor != ''){ squareName.blackCount++;
+console.log('encounter for black');
+ return}
+if ( squareName.altPieceType == ''  ){
+
+    
+    squareName.blackCount++;
+    console.log('i Recursioned for black count')
+    return bishopCountUpRight(row +1, col+1 )
+   
+}
+}
+
+if (currentTurnColor == 'black'){
+    if (squareName.altPieceColor != ''){ squareName.whiteCount++;
+        console.log('encounter for white');
+         return}
+  
+    if ( squareName.altPieceType == ''  ){
+         
+        
+        squareName.whiteCount++;
+        console.log('i Recursioned for white')
+        return bishopCountUpRight(row +1, col+1 )
+       
+    }
+    }
+
+}
+
+
+
+
+
+//f
+//
+//
+function
+bishopCountDownRight(row, col){
+    squareName = findSquare(row,col)
+
+
+
+    if (squareName == undefined) {return}
+
+if (currentTurnColor == 'white'){
+if (squareName.altPieceColor != ''){ squareName.blackCount++;
+console.log('encounter for black');
+ return}
+if ( squareName.altPieceType == ''  ){
+
+    
+    squareName.blackCount++;
+    console.log('i Recursioned for black count')
+    return bishopCountDownRight(row -1, col +1 )
+   
+}
+}
+
+if (currentTurnColor == 'black'){
+    if (squareName.altPieceColor != ''){ squareName.whiteCount++;
+        console.log('encounter for white');
+         return}
+  
+    if ( squareName.altPieceType == ''  ){
+         
+        
+        squareName.whiteCount++;
+        console.log('i Recursioned for white')
+        return bishopCountDownRight(row -1, col +1 )
+       
+    }
+    }
+
+}
+
+
+
+
+
+
+//f
+//
+//
+function
+bishopCountUpLeft(row, col){
+    squareName = findSquare(row,col)
+
+
+
+    if (squareName == undefined) {return}
+
+if (currentTurnColor == 'white'){
+if (squareName.altPieceColor != ''){ squareName.blackCount++;
+console.log('encounter for black');
+ return}
+if ( squareName.altPieceType == ''  ){
+
+    
+    squareName.blackCount++;
+    console.log('i Recursioned for black count')
+    return bishopCountUpLeft(row+1 , col - 1 )
+   
+}
+}
+
+if (currentTurnColor == 'black'){
+    if (squareName.altPieceColor != ''){ squareName.whiteCount++;
+        console.log('encounter for white');
+         return}
+  
+    if ( squareName.altPieceType == ''  ){
+         
+        
+        squareName.whiteCount++;
+        console.log('i Recursioned for white')
+        return bishopCountUpLeft(row+1 , col - 1 )
+       
+    }
+    }
+
+}
+
+
+
+function
+bishopCountDownLeft(row, col){
+    squareName = findSquare(row,col)
+
+
+
+    if (squareName == undefined) {return}
+
+if (currentTurnColor == 'white'){
+if (squareName.altPieceColor != ''){ squareName.blackCount++;
+console.log('encounter for black');
+ return}
+if ( squareName.altPieceType == ''  ){
+
+    
+    squareName.blackCount++;
+    console.log('i Recursioned for black count')
+    return bishopCountDownLeft(row - 1 , col -1 )
+   
+}
+}
+
+if (currentTurnColor == 'black'){
+    if (squareName.altPieceColor != ''){ squareName.whiteCount++;
+        console.log('encounter for white');
+         return}
+  
+    if ( squareName.altPieceType == ''  ){
+         
+        
+        squareName.whiteCount++;
+        console.log('i Recursioned for white')
+        return bishopCountDownLeft(row -1 , col -1 )
+       
+    }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 //f
@@ -296,9 +642,88 @@ if (currentTurnColor == 'black'){
 
 
 
+//f
+//
+//
+function
+rookCountLeft(row, col){
+    squareName = findSquare(row,col)
 
 
 
+    if (squareName == undefined) {return}
+
+if (currentTurnColor == 'white'){
+if (squareName.altPieceColor != ''){ squareName.blackCount++;
+console.log('encounter for black');
+ return}
+if ( squareName.altPieceType == ''  ){
+
+    
+    squareName.blackCount++;
+    console.log('i Recursioned for black count')
+    return rookCountLeft(row , col - 1 )
+   
+}
+}
+
+if (currentTurnColor == 'black'){
+    if (squareName.altPieceColor != ''){ squareName.whiteCount++;
+        console.log('encounter for white');
+         return}
+  
+    if ( squareName.altPieceType == ''  ){
+         
+        
+        squareName.whiteCount++;
+        console.log('i Recursioned for white')
+        return rookCountLeft(row , col - 1 )
+       
+    }
+    }
+
+}
+
+
+
+function
+rookCountRight(row, col){
+    squareName = findSquare(row,col)
+
+
+
+    if (squareName == undefined) {return}
+
+if (currentTurnColor == 'white'){
+if (squareName.altPieceColor != ''){ squareName.blackCount++;
+console.log('encounter for black');
+ return}
+if ( squareName.altPieceType == ''  ){
+
+    
+    squareName.blackCount++;
+    console.log('i Recursioned for black count')
+    return rookCountRight(row , col + 1 )
+   
+}
+}
+
+if (currentTurnColor == 'black'){
+    if (squareName.altPieceColor != ''){ squareName.whiteCount++;
+        console.log('encounter for white');
+         return}
+  
+    if ( squareName.altPieceType == ''  ){
+         
+        
+        squareName.whiteCount++;
+        console.log('i Recursioned for white')
+        return rookCountRight(row , col + 1 )
+       
+    }
+    }
+
+}
 
 
 
@@ -428,6 +853,9 @@ const h7Div = document.querySelector('.h7-Square');
 const h8Div = document.querySelector('.h8-Square');
 
 
+//
+// This array corrosponds with squaresArray to make matching DIV with Object easy.
+//
 const divArray = [a1Div,a2Div,a3Div,a4Div,a5Div,a6Div,a7Div,a8Div,b1Div,b2Div,
    b3Div,b4Div,b5Div,b6Div,b7Div,b8Div,c1Div,c2Div,c3Div,c4Div,c5Div,c6Div,c7Div,c8Div,
    d1Div, d2Div, d3Div,d4Div,d5Div,d6Div,d7Div,d8Div,e1Div,e2Div,e3Div,e4Div,e5Div,e6Div,
@@ -550,6 +978,7 @@ changeTurn(){
     mapImages();
     lastObject.pop();
     lastObject.push(currentObject);
+    resetCount();
     runCountChecker()
     checkChecker();
     
