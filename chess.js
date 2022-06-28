@@ -22,6 +22,8 @@ class Square {
 
     constructor(_rowParam, _colParam, _typeParam, _colorParam,_divParam){
         
+        this.pastPieceType = '';
+        this.pastPieceColor = '';
         this.row = _rowParam;
         this.col = _colParam;
         this.possible = false; 
@@ -34,6 +36,8 @@ class Square {
         this.altPieceType = '';
         this.altPieceColor = '';
         this.divId = _divParam
+        this.clickable = true;
+
         squaresArray.push(this);
         
 
@@ -78,12 +82,12 @@ c8Square = new Square(7,2,'bishop','black');
 
 
 d1Square = new Square(0,3,'queen','white');
-d2Square = new Square(1,3,'pawn','white');
+d2Square = new Square(1,3,'','');
 d3Square = new Square(2,3,'','');
 d4Square = new Square(3,3,'','');
 d5Square = new Square(4,3,'','');
 d6Square = new Square(5,3,'','');
-d7Square = new Square(6,3,'pawn','black');
+d7Square = new Square(6,3,'','');
 d8Square = new Square(7,3,'queen','black');
 
 
@@ -125,6 +129,47 @@ h7Square = new Square(6,7,'pawn','black');
 h8Square = new Square(7,7,'rook','black');
 
 
+function 
+findBlackKing(){
+  
+
+    for (let i = 0; i < squaresArray.length; i ++){
+if (squaresArray[i].pieceType == 'king' && squaresArray[i].pieceColor == 'black') { return squaresArray[i]}
+    }
+}
+
+function 
+findWhiteKing(){
+  
+
+    for (let i = 0; i < squaresArray.length; i ++){
+if (squaresArray[i].pieceType == 'king' && squaresArray[i].pieceColor == 'white') { return squaresArray[i]}
+    }
+}
+
+
+
+
+
+//f
+//
+//
+function
+pastBoardUpdate(){
+    for (let i = 0; i < squaresArray.length; i++ ){
+        squaresArray[i].pastPieceType = squaresArray[i].pieceType
+        squaresArray[i].pastPieceColor = squaresArray[i].pieceColor
+    }
+}
+
+function
+updateRealWithPastBoard(){
+    for (let i = 0; i < squaresArray.length; i++ ){
+        squaresArray[i].pieceType = squaresArray[i].pastPieceType
+        squaresArray[i].pieceColor = squaresArray[i].pastPieceColor
+    }
+}
+
 //f
 //  Find the square with col and row coordinates and output that object
 //
@@ -165,7 +210,7 @@ checkChecker(){
                 divArray[i].style.backgroundImage = "url('./assets/red2.jpg')"
                
             wKingInCheck = true;
-            
+  
 
 
 
@@ -180,7 +225,7 @@ checkChecker(){
             if ('king' == squaresArray[i].pieceType && 'black' == squaresArray[i].pieceColor && 0 != squaresArray[i].whiteCount ){ 
                 divArray[i].style.backgroundImage = "url('./assets/red2.jpg')"
             bKingInCheck = true;
-
+   
 
 
         }
@@ -262,28 +307,27 @@ knightCount(row, col){
 
 if (currentTurnColor == 'white'){
 if (squareName.altPieceColor != ''){ squareName.blackCount++;
-console.log('encounter for black');
+
  return}
 if ( squareName.altPieceType == ''  ){
 
     
     squareName.blackCount++;
-    console.log('i Recursioned for black count')
-   
+
    
 }
 }
 
 if (currentTurnColor == 'black'){
     if (squareName.altPieceColor != ''){ squareName.whiteCount++;
-        console.log('encounter for white');
+    
          return}
   
     if ( squareName.altPieceType == ''  ){
          
         
         squareName.whiteCount++;
-        console.log('i Recursioned for white')
+
  
        
     }
@@ -304,20 +348,17 @@ function
 pawnCountBlack(row, col){
     squareName = findSquare(row,col)
 
-
-
     if (squareName == undefined) {return}
 
 if (currentTurnColor == 'white'){
 if (squareName.altPieceColor != ''){ squareName.blackCount++;
-console.log('encounter for black');
+ 
  return}
 if ( squareName.altPieceType == ''  ){
 
     
     squareName.blackCount++;
-    console.log('i Recursioned for black count')
-
+ 
    
 }
 }
@@ -375,28 +416,27 @@ bishopCountUpRight(row, col){
 
 if (currentTurnColor == 'white'){
 if (squareName.altPieceColor != ''){ squareName.blackCount++;
-console.log('encounter for black');
+ 
  return}
 if ( squareName.altPieceType == ''  ){
 
     
     squareName.blackCount++;
-    console.log('i Recursioned for black count')
-    return bishopCountUpRight(row +1, col+1 )
+     return bishopCountUpRight(row +1, col+1 )
    
 }
 }
 
 if (currentTurnColor == 'black'){
     if (squareName.altPieceColor != ''){ squareName.whiteCount++;
-        console.log('encounter for white');
+    
          return}
   
     if ( squareName.altPieceType == ''  ){
          
         
         squareName.whiteCount++;
-        console.log('i Recursioned for white')
+         
         return bishopCountUpRight(row +1, col+1 )
        
     }
@@ -421,28 +461,27 @@ bishopCountDownRight(row, col){
 
 if (currentTurnColor == 'white'){
 if (squareName.altPieceColor != ''){ squareName.blackCount++;
-console.log('encounter for black');
+ 
  return}
 if ( squareName.altPieceType == ''  ){
 
     
     squareName.blackCount++;
-    console.log('i Recursioned for black count')
-    return bishopCountDownRight(row -1, col +1 )
+     return bishopCountDownRight(row -1, col +1 )
    
 }
 }
 
 if (currentTurnColor == 'black'){
     if (squareName.altPieceColor != ''){ squareName.whiteCount++;
-        console.log('encounter for white');
+    
          return}
   
     if ( squareName.altPieceType == ''  ){
          
         
         squareName.whiteCount++;
-        console.log('i Recursioned for white')
+         
         return bishopCountDownRight(row -1, col +1 )
        
     }
@@ -468,28 +507,27 @@ bishopCountUpLeft(row, col){
 
 if (currentTurnColor == 'white'){
 if (squareName.altPieceColor != ''){ squareName.blackCount++;
-console.log('encounter for black');
+ 
  return}
 if ( squareName.altPieceType == ''  ){
 
     
     squareName.blackCount++;
-    console.log('i Recursioned for black count')
-    return bishopCountUpLeft(row+1 , col - 1 )
+     return bishopCountUpLeft(row+1 , col - 1 )
    
 }
 }
 
 if (currentTurnColor == 'black'){
     if (squareName.altPieceColor != ''){ squareName.whiteCount++;
-        console.log('encounter for white');
+    
          return}
   
     if ( squareName.altPieceType == ''  ){
          
         
         squareName.whiteCount++;
-        console.log('i Recursioned for white')
+         
         return bishopCountUpLeft(row+1 , col - 1 )
        
     }
@@ -509,41 +547,33 @@ bishopCountDownLeft(row, col){
 
 if (currentTurnColor == 'white'){
 if (squareName.altPieceColor != ''){ squareName.blackCount++;
-console.log('encounter for black');
+ 
  return}
 if ( squareName.altPieceType == ''  ){
 
     
     squareName.blackCount++;
-    console.log('i Recursioned for black count')
-    return bishopCountDownLeft(row - 1 , col -1 )
+     return bishopCountDownLeft(row - 1 , col -1 )
    
 }
 }
 
 if (currentTurnColor == 'black'){
     if (squareName.altPieceColor != ''){ squareName.whiteCount++;
-        console.log('encounter for white');
+    
          return}
   
     if ( squareName.altPieceType == ''  ){
          
         
         squareName.whiteCount++;
-        console.log('i Recursioned for white')
+         
         return bishopCountDownLeft(row -1 , col -1 )
        
     }
     }
 
 }
-
-
-
-
-
-
-
 
 
 
@@ -562,28 +592,27 @@ rookCountUp(row, col){
 
 if (currentTurnColor == 'white'){
 if (squareName.altPieceColor != ''){ squareName.blackCount++;
-console.log('encounter for black');
+ 
  return}
 if ( squareName.altPieceType == ''  ){
 
     
     squareName.blackCount++;
-    console.log('i Recursioned for black count')
-    return rookCountUp(row +1, col )
+     return rookCountUp(row +1, col )
    
 }
 }
 
 if (currentTurnColor == 'black'){
     if (squareName.altPieceColor != ''){ squareName.whiteCount++;
-        console.log('encounter for white');
+    
          return}
   
     if ( squareName.altPieceType == ''  ){
          
         
         squareName.whiteCount++;
-        console.log('i Recursioned for white')
+         
         return rookCountUp(row +1, col )
        
     }
@@ -608,28 +637,27 @@ rookCountDown(row, col){
 
 if (currentTurnColor == 'white'){
 if (squareName.altPieceColor != ''){ squareName.blackCount++;
-console.log('encounter for black');
+ 
  return}
 if ( squareName.altPieceType == ''  ){
 
     
     squareName.blackCount++;
-    console.log('i Recursioned for black count')
-    return rookCountDown(row -1, col )
+     return rookCountDown(row -1, col )
    
 }
 }
 
 if (currentTurnColor == 'black'){
     if (squareName.altPieceColor != ''){ squareName.whiteCount++;
-        console.log('encounter for white');
+    
          return}
   
     if ( squareName.altPieceType == ''  ){
          
         
         squareName.whiteCount++;
-        console.log('i Recursioned for white')
+         
         return rookCountDown(row -1, col )
        
     }
@@ -655,28 +683,27 @@ rookCountLeft(row, col){
 
 if (currentTurnColor == 'white'){
 if (squareName.altPieceColor != ''){ squareName.blackCount++;
-console.log('encounter for black');
+ 
  return}
 if ( squareName.altPieceType == ''  ){
 
     
     squareName.blackCount++;
-    console.log('i Recursioned for black count')
-    return rookCountLeft(row , col - 1 )
+     return rookCountLeft(row , col - 1 )
    
 }
 }
 
 if (currentTurnColor == 'black'){
     if (squareName.altPieceColor != ''){ squareName.whiteCount++;
-        console.log('encounter for white');
+    
          return}
   
     if ( squareName.altPieceType == ''  ){
          
         
         squareName.whiteCount++;
-        console.log('i Recursioned for white')
+         
         return rookCountLeft(row , col - 1 )
        
     }
@@ -696,28 +723,27 @@ rookCountRight(row, col){
 
 if (currentTurnColor == 'white'){
 if (squareName.altPieceColor != ''){ squareName.blackCount++;
-console.log('encounter for black');
+ 
  return}
 if ( squareName.altPieceType == ''  ){
 
     
     squareName.blackCount++;
-    console.log('i Recursioned for black count')
-    return rookCountRight(row , col + 1 )
+     return rookCountRight(row , col + 1 )
    
 }
 }
 
 if (currentTurnColor == 'black'){
     if (squareName.altPieceColor != ''){ squareName.whiteCount++;
-        console.log('encounter for white');
+    
          return}
   
     if ( squareName.altPieceType == ''  ){
          
         
         squareName.whiteCount++;
-        console.log('i Recursioned for white')
+         
         return rookCountRight(row , col + 1 )
        
     }
@@ -862,6 +888,14 @@ const divArray = [a1Div,a2Div,a3Div,a4Div,a5Div,a6Div,a7Div,a8Div,b1Div,b2Div,
    e7Div,e8Div,f1Div,f2Div,f3Div,f4Div,f5Div,f6Div,f7Div,f8Div,g1Div,g2Div,g3Div,g4Div,
    g5Div,g6Div,g7Div,g8Div,h1Div,h2Div,h3Div,h4Div,h5Div,h6Div,h7Div,h8Div] 
 
+   a1Clickable =  true; a2Clickable =  true; a3Clickable =  true; a4Clickable =  true; a5Clickable =  true; a6Clickable =  true; a7Clickable =  true; a8Clickable =  true; 
+   b1Clickable =  true; b2Clickable =  true; b3Clickable =  true; b4Clickable =  true; b5Clickable =  true; b6Clickable =  true; b7Clickable =  true; b8Clickable =  true; 
+   c1Clickable =  true; c2Clickable =  true; c3Clickable =  true; c4Clickable =  true; c5Clickable =  true; c6Clickable =  true; c7Clickable =  true; c8Clickable =  true; 
+    d1Clickable =  true;  d2Clickable =  true;  d3Clickable =  true; d4Clickable =  true; d5Clickable =  true; d6Clickable =  true; d7Clickable =  true; d8Clickable =  true; 
+    e1Clickable =  true; e2Clickable =  true; e3Clickable =  true; e4Clickable =  true; e5Clickable =  true; e6Clickable =  true; e7Clickable =  true; e8Clickable =  true;
+    f1Clickable =  true; f2Clickable =  true; f3Clickable =  true; f4Clickable =  true; f5Clickable =  true; f6Clickable =  true; f7Clickable =  true; f8Clickable =  true; 
+    g1Clickable =  true; g2Clickable =  true; g3Clickable =  true; g4Clickable =  true;  g5Clickable =  true; g6Clickable =  true; g7Clickable =  true; g8Clickable =  true; 
+    h1Clickable =  true; h2Clickable =  true; h3Clickable =  true; h4Clickable =  true; h5Clickable =  true; h6Clickable =  true; h7Clickable =  true; h8Clickable = true;
 
 
 
@@ -900,22 +934,22 @@ const divArray = [a1Div,a2Div,a3Div,a4Div,a5Div,a6Div,a7Div,a8Div,b1Div,b2Div,
 
 
     d1Square = new Square(0,3,'queen','white');
-    d2Square = new Square(1,3,'pawn','white');
+    d2Square = new Square(1,3,'','');
     d3Square = new Square(2,3,'','');
     d4Square = new Square(3,3,'','');
     d5Square = new Square(4,3,'','');
     d6Square = new Square(5,3,'','');
-    d7Square = new Square(6,3,'pawn','black');
+    d7Square = new Square(6,3,'','');
     d8Square = new Square(7,3,'queen','black');
 
 
     e1Square = new Square(0,4,'king','white');
-    e2Square = new Square(1,4,'pawn','white');
+    e2Square = new Square(1,4,'','');
     e3Square = new Square(2,4,'','');
     e4Square = new Square(3,4,'','');
     e5Square = new Square(4,4,'','');
     e6Square = new Square(5,4,'','');
-    e7Square = new Square(6,4,'pawn','black');
+    e7Square = new Square(6,4,'','');
     e8Square = new Square(7,4,'king','black');
 
     f1Square = new Square(0,5,'bishop','white');
@@ -947,8 +981,6 @@ const divArray = [a1Div,a2Div,a3Div,a4Div,a5Div,a6Div,a7Div,a8Div,b1Div,b2Div,
     h8Square = new Square(7,7,'rook','black');
 
 
-
-
 //f
 //
 //
@@ -961,14 +993,35 @@ altSnapshot(){
 }
 
 
+function
+CheckForPin(){
+
+    let whiteKingSquare = findWhiteKing();
+    let blackKingSquare = findBlackKing();
+    resetCount();
+    altSnapshot();
+    runCountChecker();
+  
+    if (currentTurnColor == 'black' && blackKingSquare.whiteCount > 0){  turnColorSwitcher();  updateRealWithPastBoard(); }
+    if (currentTurnColor == 'white' && whiteKingSquare.blackCount > 0){ turnColorSwitcher(); updateRealWithPastBoard();  }
+}
+function 
+turnColorSwitcher(){    if (currentTurnColor == 'white'){ currentTurnColor = 'black'; }
+else{ currentTurnColor = 'white'; }}
 //f
 //  Change Turn
 //
 function 
 changeTurn(){
-    
-    if (currentTurnColor == 'white'){ currentTurnColor = 'black'; }
-    else{ currentTurnColor = 'white';}
+  
+    CheckForPin()
+
+
+turnColorSwitcher();
+
+
+
+   
 
     possibilityState = false;
     resetPossibleAndEncounter();
@@ -981,7 +1034,8 @@ changeTurn(){
     resetCount();
     runCountChecker()
     checkChecker();
-    
+    pastBoardUpdate()
+
 }
 
 //f
@@ -2520,7 +2574,6 @@ console.log(a1Square);
 console.log(currentObject)
 changeTurn()
 }
-
 
 
 
